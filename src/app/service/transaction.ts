@@ -1,18 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Book } from '../interface/book';
-import { BookResponse } from '../interface/book-response';
+import { Transaction } from '../interface/transaction';
+import { CreateTransactionRequest } from '../interface/create-transaction-request';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionService {
-  private apiUrl = 'https://stephen-king-api.onrender.com/api/books';
+  private transactionUrl = 'http://localhost:8080/api/transactions';
 
   constructor(private http: HttpClient){}
-  
-  getBooks(): Observable<BookResponse> {
-    return this.http.get<BookResponse>(this.apiUrl);
+
+  getTransactions(): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(this.transactionUrl);
+  }
+
+  getTransactionById(id: number): Observable<Transaction> {
+    return this.http.get<Transaction>(`${this.transactionUrl}/${id}`);
+  }
+
+  createTransaction(id: number, request: CreateTransactionRequest) {
+    return this.http.post<Transaction>(`${this.transactionUrl}/${id}`, request);
+  }
+
+  updateTransaction(id: number, request: CreateTransactionRequest) {
+    return this.http.patch<Transaction>(`${this.transactionUrl}/${id}`, request)
   }
 }
