@@ -1,0 +1,38 @@
+<div class="transaction-form">
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-field">
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" formControlName="amount" required>
+        
+        @if(transactionForm.get('amount')?.invalid && transactionForm.get('amount')?.touched) {
+            <small class="error">Amount must be a greater than 0.</small>
+        }
+    </div>
+
+    <div class="form-field">
+        <label for="category">Category</label>
+        <input type="text" id="category" formControlName="category" required>
+        
+        @if(transactionForm.get('category')?.invalid && transactionForm.get('category')?.touched) {
+            <small class="error">Category is required.</small>
+        }
+    </div>
+
+    <div class="form-field">
+        <label for="description">Description</label>
+        <input type="text" id="description" formControlName="description" required>
+
+        @if(transactionForm.get('description')?.invalid && transactionForm.get('description')?.touched) {
+            <small class="error">Description is required.</small>
+        }
+    </div>
+
+    <div class="form-field">
+        <label for="date">Date</label>
+        <input type="date" id="date" formControlName="date" required>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
