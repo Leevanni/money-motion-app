@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Transaction } from '../interface/transaction';
-import { CreateTransactionRequest } from '../interface/create-transaction-request';
+import { Transaction } from '../models/transaction';
+import { CreateTransactionRequest } from '../models/create-transaction-request';
+import { UpdateTransactionRequest } from '../models/update-transaction-request';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +21,11 @@ export class TransactionService {
     return this.http.get<Transaction>(`${this.transactionUrl}/${id}`);
   }
 
-  createTransaction(id: number, request: CreateTransactionRequest) {
+  createTransaction(id: number, request: CreateTransactionRequest): Observable<Transaction>{
     return this.http.post<Transaction>(`${this.transactionUrl}/${id}`, request);
   }
 
-  updateTransaction(id: number, request: CreateTransactionRequest) {
+  updateTransaction(id: number, request: UpdateTransactionRequest): Observable<Transaction> {
     return this.http.patch<Transaction>(`${this.transactionUrl}/${id}`, request)
   }
 }

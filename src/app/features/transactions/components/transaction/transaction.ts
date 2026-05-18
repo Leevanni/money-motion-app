@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TransactionService } from '../../service/transaction';
-import { Transaction } from '../../interface/transaction';
+import { TransactionService } from '../../services/transaction';
+import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'app-transaction',
@@ -12,24 +12,28 @@ export class TransactionComponent {
   title = 'money-motion-app';
   transactionList: Transaction[] | undefined;
   loading = true;
+  errorMessage = '';
 
   constructor(private transactionService: TransactionService){}
 
   ngOnInit() {
-    this.laodTransactions();
+    this.loadTransactions();
   }
 
-  laodTransactions() {
+  loadTransactions() {
+    this.loading = true;
+    this.errorMessage = '';
+
     this.transactionService.getTransactions().subscribe({
       next: (response) => {
         this.transactionList = response;
         this.loading = false;
-        console.log('Transactions:', response)
       },
       error: (err) => {
         console.error('Error loading transactions', err);
+        this.errorMessage = 'Unable to load transactions right now';
+        this.loading = false;
       }
     })
-  }
-  
+  } 
 }

@@ -4,7 +4,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { TransactionComponent } from './component/transaction/transaction';
+import { TransactionComponent } from './features/transactions/components/transaction/transaction';
 import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({

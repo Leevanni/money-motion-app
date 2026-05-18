@@ -1,4 +1,4 @@
-export interface updateTransactionRequest {
+export interface UpdateTransactionRequest {
     category?: string;
     description?: string;
 }
