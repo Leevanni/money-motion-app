@@ -14,18 +14,18 @@ export class TransactionService {
   constructor(private http: HttpClient){}
 
   getTransactions(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(this.transactionUrl);
+    return this.http.get<Transaction[]>(this.transactionUrl, { withCredentials: true });
   }
 
   getTransactionById(id: number): Observable<Transaction> {
-    return this.http.get<Transaction>(`${this.transactionUrl}/${id}`);
+    return this.http.get<Transaction>(`${this.transactionUrl}/${id}`, { withCredentials: true });
   }
 
-  createTransaction(id: number, request: CreateTransactionRequest): Observable<Transaction>{
-    return this.http.post<Transaction>(`${this.transactionUrl}/${id}`, request);
+  createTransaction(request: CreateTransactionRequest): Observable<Transaction>{
+    return this.http.post<Transaction>(`${this.transactionUrl}`, request, { withCredentials: true });
   }
 
   updateTransaction(id: number, request: UpdateTransactionRequest): Observable<Transaction> {
-    return this.http.patch<Transaction>(`${this.transactionUrl}/${id}`, request)
+    return this.http.patch<Transaction>(`${this.transactionUrl}/${id}`, request, { withCredentials: true })
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TransactionService } from '../../services/transaction';
 import { Transaction } from '../../models/transaction';
+import { CreateTransactionRequest } from '../../models/create-transaction-request';
 
 @Component({
   selector: 'app-transaction',
@@ -36,4 +37,15 @@ export class TransactionComponent {
       }
     })
   } 
+
+  onCreateTransaction(transaction: CreateTransactionRequest) {
+    this.transactionService.createTransaction(transaction).subscribe({
+      next: () => this.loadTransactions(),
+      error: (err) => {
+        console.error('Error creating transaction', err);
+        this.errorMessage = 'Unable to create transaction right now';
+      }
+    });
+  }
+
 }

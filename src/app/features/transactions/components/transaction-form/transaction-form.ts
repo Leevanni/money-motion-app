@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {FormGroup, FormControl, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
+import { CreateTransactionRequest } from '../../models/create-transaction-request';
 
 @Component({
   selector: 'app-transaction-form',
@@ -8,7 +9,7 @@ import {FormGroup, FormControl, ReactiveFormsModule, FormBuilder, Validators} fr
   styleUrl: './transaction-form.scss',
 })
 export class TransactionForm {
-
+  @Output() createTransaction = new EventEmitter<CreateTransactionRequest>();
   transactionForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
@@ -31,6 +32,8 @@ export class TransactionForm {
       this.transactionForm.markAllAsTouched();
       return;
     }
-    console.log(this.transactionForm?.value);
+
+    this.createTransaction.emit(this.transactionForm.value as CreateTransactionRequest);
+    this.transactionForm.reset();
   }
 }
