@@ -8,12 +8,16 @@ import { TransactionComponent } from './features/transactions/components/transac
 import { provideHttpClient } from '@angular/common/http';
 import { TransactionForm } from './features/transactions/components/transaction-form/transaction-form';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TransactionStoreTs } from './app/stores/transaction.store.ts/transaction.store.ts';
+import { TransactionStore } from './transaction.store/transaction.store';
 
 @NgModule({
   declarations: [
     App,
     TransactionComponent,
     TransactionForm,
+    TransactionStoreTs,
+    TransactionStore,
       ],
   imports: [
     BrowserModule,
