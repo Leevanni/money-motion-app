@@ -18,7 +18,7 @@ export class TransactionComponent {
   constructor(private transactionService: TransactionService){}
 
   ngOnInit() {
-    this.loadTransactions();
+    // this.loadTransactions();
   }
 
   loadTransactions() {
