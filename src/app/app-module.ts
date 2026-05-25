@@ -7,19 +7,22 @@ import { App } from './app';
 import { TransactionComponent } from './features/transactions/components/transaction/transaction';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { TransactionForm } from './features/transactions/components/transaction-form/transaction-form';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './features/auth/components/login-component/login-component';
 
 @NgModule({
   declarations: [
     App,
     TransactionComponent,
     TransactionForm,
+    LoginComponent,
       ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
