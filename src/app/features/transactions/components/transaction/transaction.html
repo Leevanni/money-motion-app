@@ -1,3 +1,15 @@
-
 <app-transaction-form (createTransaction)="onCreateTransaction($event)"></app-transaction-form>
 
+@if (transactionStore.loading()) {
+  <p>Loading transactions...</p>
+}
+
+@if (transactionStore.error()) {
+  <p>{{ transactionStore.error() }}</p>
+}
+
+@for (transaction of transactionStore.transactions(); track transaction.id) {
+  <div>
+    {{ transaction.description }} - {{ transaction.amount }}
+  </div>
+}

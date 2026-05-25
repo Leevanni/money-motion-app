@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import {FormGroup, FormControl, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CreateTransactionRequest } from '../../models/create-transaction-request';
 
 @Component({

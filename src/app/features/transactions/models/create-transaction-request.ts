@@ -1,7 +1,6 @@
 export interface CreateTransactionRequest {
-    amout: number;
+    amount: number;
     category: string;
     date: string;
     description: string;
-    userId: number;
 }
