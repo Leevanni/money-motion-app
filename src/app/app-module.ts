@@ -5,10 +5,11 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { TransactionComponent } from './features/transactions/components/transaction/transaction';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { TransactionForm } from './features/transactions/components/transaction-form/transaction-form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './features/auth/components/login-component/login-component';
+import { DashboardComponent } from './features/dashboard/component/dashboard-component/dashboard-component';
 
 @NgModule({
   declarations: [
@@ -16,12 +17,12 @@ import { LoginComponent } from './features/auth/components/login-component/login
     TransactionComponent,
     TransactionForm,
     LoginComponent,
+    DashboardComponent
       ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
     FormsModule
   ],
   providers: [

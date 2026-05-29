@@ -1,0 +1,51 @@
+@if (dashboard(); as data) {
+  <section class="dashboard">
+    <header class="dashboard-header">
+      <div>
+        <h1>Account Summary</h1>
+        <p>Welcome back, {{ data.user.displayName }}</p>
+      </div>
+
+      <div class="user-avatar">
+        {{ data.user.initials }}
+      </div>
+    </header>
+
+    <nav class="dashboard-tabs">
+      <button>Summary</button>
+      <button>Transactions</button>
+      <button>Budgets</button>
+      <button>Insights</button>
+    </nav>
+
+    <section class="accounts-grid">
+      @for (account of data.accounts; track account.accountId) {
+        <article class="account-card">
+          <div class="account-card-header">
+            <div>
+              <h2>{{ account.accountName }}</h2>
+              <p>{{ account.accountType }}</p>
+            </div>
+
+            <strong>{{ account.accountBalance | currency }}</strong>
+          </div>
+
+          <div class="transactions">
+            <h3>Recent Transactions</h3>
+
+            @for (transaction of account.recentTransactions; track transaction.transactionId) {
+              <div class="transaction-row">
+                <div>
+                  <p>{{ transaction.description }}</p>
+                  <span>{{ transaction.category }}</span>
+                </div>
+
+                <span>{{ transaction.amount | currency }}</span>
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </section>
+  </section>
+}

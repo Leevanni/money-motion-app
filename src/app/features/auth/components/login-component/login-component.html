@@ -6,7 +6,7 @@
   />
 
   <div class="login-form">
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <div class="form-field">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" ngModel required />
