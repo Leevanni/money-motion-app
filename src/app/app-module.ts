@@ -1,7 +1,8 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { TransactionComponent } from './features/transactions/components/transaction/transaction';
@@ -22,6 +23,8 @@ import { DashboardComponent } from './features/dashboard/component/dashboard-com
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ButtonModule,
+    CardModule,
     ReactiveFormsModule,
     FormsModule
   ],
